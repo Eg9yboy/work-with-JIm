@@ -1,0 +1,49 @@
+<html>
+<!DOCTYPE html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="menubar.css" />
+	</head>
+	<body>
+	
+	<script type="text/javascript">
+		function body1()
+		{
+			document.getElementById("body1").style.display = "block";
+			document.getElementById("body2").style.display ="none";
+		}
+		
+		function body2()
+		{
+			document.getElementById("body2").style.display = "block";
+			document.getElementById("body1").style.display = "none";
+		}
+		
+		function bodyinit()
+		{
+			document.getElementById("body2").style.display = "none";
+		}
+		
+		document.addEventListener("DOMContentLoaded", bodyinit, false);
+	
+	</script>
+		<div class="hmenubar">
+			<ul>
+				<li onclick="body1()">body1</li>
+				<li onclick="body2()">body2</li>
+			</ul>
+		</div>
+		<div class="vmenubar">
+			<ul>
+				<li onclick="body1()">body1</li>
+				<li onclick="body2()">body2</li>
+			</ul>
+		</div>
+		<div class="body" id="body1">
+			Body1
+		</div>
+		<div class="body" id="body2">
+			Body2
+		</div>
+		
+	</body>
+</html>
