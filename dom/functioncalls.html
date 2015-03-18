@@ -1,0 +1,35 @@
+<html>
+<!DOCTYPE html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="menubar.css" />
+	</head>
+	<body>
+	
+	<script type="text/javascript">
+		//<![CDATA[
+		function insertnode(elementtype, elementclass, elementid)
+		{	
+			if (arguments.length > 3)
+			{
+			var textnode = arguments[3];
+			}
+			else {
+			var textnode = "default"
+			}
+			var insertelement = document.createElement(elementtype);
+			var myTextNode = document.createTextNode(textnode);
+			insertelement.appendChild(myTextNode);
+			insertelement.setAttribute("class", elementclass);
+			insertelement.setAttribute("id", elementid);
+			document.getElementById("insertionpoint").appendChild(insertelement);
+		}
+		//]]>
+	
+	</script>
+	<input type="BUTTON" value="Click here to insert node" onClick="insertnode('div', 'myclass', 'myid', 'sometext');" />
+	
+	
+	<div id="insertionpoint">
+	</div>
+	
+</html>
