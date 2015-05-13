@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script type="text/javascript">
+
+function mysubmit(formname){
+	var myvar = new Array(document.forms[formname].elements.length);
+	for (var i = 0; i < document.forms[formname].elements.length; i++){
+	myvar[i]=document.forms[formname].elements[i].value;
+	}
+	alert(myvar.toString());
+}
+</script>
+<form id="myform" onsubmit="mysubmit(myname);">
+<!-- Put your form code in here-->
+<input type="TEXT" name="mytext" value=""></input>
+
+<!-- up until here-->
+<input type="button" name ="button" value="My Button" onclick="mysubmit('myform');">
+</form>
+</body>
+</html>
