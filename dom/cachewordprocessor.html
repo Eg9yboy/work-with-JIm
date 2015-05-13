@@ -1,0 +1,54 @@
+<html>
+<!DOCTYPE html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="menubar.css"/>
+	<script type="text/javascript" src="cachewordprocessor.js"></script>
+	<script type="text/javascript">
+		//<![CDATA[
+		function insertnode()
+		{
+			var elementtype = (document.getElementById("formnodetype")).value;
+			var elementclass = (document.getElementById("formclassname")).value;
+			var elementid = (document.getElementById("formelementid")).value;
+			var textnode = (document.getElementById("formtextnode")).value;
+			var insertelement = document.createElement(elementtype);
+			var myTextNode = document.createTextNode(textnode);
+			insertelement.appendChild(myTextNode);
+			insertelement.setAttribute("class", elementclass);
+			insertelement.setAttribute("id", elementid);
+			document.getElementById("insertionpoint").appendChild(insertelement);
+		}
+		
+		function savedocument(insertionpoint) {
+			var insert = document.getElementById(insertionpoint);
+			var mydoc = new ProcessorDocument(document.getElementById("documentTitle").value);
+			mydoc.save(insert);
+		}
+		
+		function loaddocument(insertionpoint){
+			var insert = document.getElementById(insertionpoint);
+			var mydoc = new ProcessorDocument(document.getElementById("documentTitle").value);
+			var node = document.createElement("div");
+			insert.parentNode.replaceChild(node, insert);
+			node.outerHTML = mydoc.get(mydoc.title);
+			
+		}
+		//]]>
+	</script>
+	</head>
+	<body>
+	<input type="TEXT" id="formnodetype" value="div" />
+	<input type="TEXT" id="formclassname" value="myclass" />
+	<input type="TEXT" id="formelementid" value="myid" />
+	<input type="TEXTAREA" id="formtextnode" value="Please insert this text" />
+	<input type="TEXT" value="My Document Title" id="documentTitle" /> 
+	<input type="TEXT" value="Username" id="username" />
+	<input type="BUTTON" value="Click here to insert node" onClick="insertnode()" />
+	<input type="BUTTON" value="Click here to save document" onClick="savedocument('insertionpoint');" />
+	<input type="BUTTON" value="Click here to load document" onClick="loaddocument('insertionpoint');" />
+	
+	
+	<div id="insertionpoint">
+	</div>
+	</body>
+</html>
